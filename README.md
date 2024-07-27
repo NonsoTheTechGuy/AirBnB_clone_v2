@@ -215,17 +215,20 @@ guillaume@ubuntu:~/AirBnB_v2$
 + GitHub repository: `AirBnB_clone_v2`
 + File: `console.py, models/, tests/`
     
-3. MySQL setup development
-mandatory
-Score: 0.0% (Checks completed: 0.0%)
+## 3. MySQL setup development
+
+`mandatory` 
+
 Write a script that prepares a MySQL server for the project:
 
-A database hbnb_dev_db
-A new user hbnb_dev (in localhost)
-The password of hbnb_dev should be set to hbnb_dev_pwd
-hbnb_dev should have all privileges on the database hbnb_dev_db (and only this database)
-hbnb_dev should have SELECT privilege on the database performance_schema (and only this database)
-If the database hbnb_dev_db or the user hbnb_dev already exists, your script should not fail
++ A database `hbnb_dev_db`
++ A new user `hbnb_dev` (in `localhost`)
++ The password of `hbnb_dev` should be set to `hbnb_dev_pwd`
++ `hbnb_dev` should have all privileges on the database `hbnb_dev_db` (and **only this database**)
++ `hbnb_dev` should have `SELECT` privilege on the database `performance_schema` (and **only this database**)
++ If the database `hbnb_dev_db` or the user `hbnb_dev` already exists, your script should not fail
+
+```
 guillaume@ubuntu:~/AirBnB_v2$ cat setup_mysql_dev.sql | mysql -hlocalhost -uroot -p
 Enter password: 
 guillaume@ubuntu:~/AirBnB_v2$ echo "SHOW DATABASES;" | mysql -uhbnb_dev -p | grep hbnb_dev_db
@@ -238,22 +241,27 @@ GRANT USAGE ON *.* TO 'hbnb_dev'@'localhost'
 GRANT SELECT ON `performance_schema`.* TO 'hbnb_dev'@'localhost'
 GRANT ALL PRIVILEGES ON `hbnb_dev_db`.* TO 'hbnb_dev'@'localhost'
 guillaume@ubuntu:~/AirBnB_v2$ 
-Repo:
+```
 
-GitHub repository: AirBnB_clone_v2
-File: setup_mysql_dev.sql
+## Repo:
+
++ GitHub repository: `AirBnB_clone_v2`
++ File: `setup_mysql_dev.sql`
     
-4. MySQL setup test
-mandatory
-Score: 0.0% (Checks completed: 0.0%)
+## 4. MySQL setup test
+
+`mandatory`
+ 
 Write a script that prepares a MySQL server for the project:
 
-A database hbnb_test_db
-A new user hbnb_test (in localhost)
-The password of hbnb_test should be set to hbnb_test_pwd
-hbnb_test should have all privileges on the database hbnb_test_db (and only this database)
-hbnb_test should have SELECT privilege on the database performance_schema (and only this database)
-If the database hbnb_test_db or the user hbnb_test already exists, your script should not fail
++ A database `hbnb_test_db`
++ A new user `hbnb_test` (in `localhost`)
++ The password of `hbnb_test` should be set to `hbnb_test_pwd`
++ `hbnb_test` should have all privileges on the database `hbnb_test_db` (and **only this database**)
++ `hbnb_test` should have `SELECT` privilege on the database `performance_schema` (and **only this database**)
++ If the database `hbnb_test_db` or the user `hbnb_test` already exists, your script should not fail
+
+```
 guillaume@ubuntu:~/AirBnB_v2$ cat setup_mysql_test.sql | mysql -hlocalhost -uroot -p
 Enter password: 
 guillaume@ubuntu:~/AirBnB_v2$ echo "SHOW DATABASES;" | mysql -uhbnb_test -p | grep hbnb_test_db
@@ -266,18 +274,21 @@ GRANT USAGE ON *.* TO 'hbnb_test'@'localhost'
 GRANT SELECT ON `performance_schema`.* TO 'hbnb_test'@'localhost'
 GRANT ALL PRIVILEGES ON `hbnb_test_db`.* TO 'hbnb_test'@'localhost'
 guillaume@ubuntu:~/AirBnB_v2$ 
-Repo:
+```
+## Repo:
 
-GitHub repository: AirBnB_clone_v2
-File: setup_mysql_test.sql
++ GitHub repository: `AirBnB_clone_v2`
++ File: `setup_mysql_test.sql`
     
-5. Delete object
-mandatory
-Score: 0.0% (Checks completed: 0.0%)
-Update FileStorage: (models/engine/file_storage.py)
+## 5. Delete object
 
-Add a new public instance method: def delete(self, obj=None): to delete obj from __objects if it’s inside - if obj is equal to None, the method should not do anything
-Update the prototype of def all(self) to def all(self, cls=None) - that returns the list of objects of one type of class. Example below with State - it’s an optional filtering
+`mandatory`
+ 
+Update `FileStorage`: (`models/engine/file_storage.py`)
+
++ Add a new public instance method: `def delete(self, obj=None):` to delete `obj` from `__objects` if it’s inside - if `obj` is equal to `None`, the method should not do anything
++ Update the prototype of `def all(self)` to `def all(self, cls=None)` - that returns the list of objects of one type of class. Example below with `State` - it’s an optional filtering
+```
 guillaume@ubuntu:~/AirBnB_v2$ cat main_delete.py
 #!/usr/bin/python3
 """ Test delete feature
@@ -340,65 +351,72 @@ All States: 2
 All States: 1
 [State] (37705d25-8903-4318-9303-6d6d336a22c1) {'name': 'Nevada', 'created_at': datetime.datetime(2017, 11, 10, 1, 13, 34, 619133), 'id': '37705d25-8903-4318-9303-6d6d336a22c1'}
 guillaume@ubuntu:~/AirBnB_v2$ 
-Repo:
+```
 
-GitHub repository: AirBnB_clone_v2
-File: models/engine/file_storage.py
+## Repo:
+
++ GitHub repository: `AirBnB_clone_v2`
++ File: `models/engine/file_storage.py`
     
-6. DBStorage - States and Cities
-mandatory
-Score: 0.0% (Checks completed: 0.0%)
+## 6. DBStorage - States and Cities
+
+`mandatory` 
+
 SQLAlchemy will be your best friend!
 
-It’s time to change your storage engine and use SQLAlchemy
+It’s time to change your storage engine and use `SQLAlchemy`
 
+![image](https://github.com/user-attachments/assets/2d908a48-fd39-475a-9a76-aa804e8e09e1)
 
 
 In the following steps, you will make multiple changes:
 
-the biggest one is the transition between FileStorage and DBStorage: In the industry, you will never find a system who can work with both in the same time - but you will find a lot of services who can manage multiple storage systems. (for example, logs service: in memory, in disk, in database, in ElasticSearch etc…) - The main concept behind is the abstraction: Make your code running without knowing how it’s stored.
-add attributes for SQLAlchemy: they will be class attributes, like previously, with a “weird” value. Don’t worry, these values are for description and mapping to the database. If you change one of these values, or add/remove one attribute of the a model, you will have to delete the database and recreate it in SQL. (Yes it’s not optimal, but for development purposes, it’s ok. In production, we will add “migration mechanism” - for the moment, don’t spend time on it.)
++ the biggest one is the transition between `FileStorage` and `DBStorage`: In the industry, you will never find a system who can work with both in the same time - but you will find a lot of services who can manage multiple storage systems. (for example, logs service: in memory, in disk, in database, in ElasticSearch etc…) - The main concept behind is the **abstraction**: Make your code running without knowing how it’s stored.
++ add attributes for SQLAlchemy: they will be class attributes, like previously, with a “weird” value. Don’t worry, these values are for description and mapping to the database. If you change one of these values, or add/remove one attribute of the a model, you will have to delete the database and recreate it in SQL. (Yes it’s not optimal, but for development purposes, it’s ok. In production, we will add “migration mechanism” - for the moment, don’t spend time on it.)
 Please follow all these steps:
 
-Update BaseModel: (models/base_model.py)
+Update `BaseModel`: (`models/base_model.py`)
 
-Create Base = declarative_base() before the class definition of BaseModel
-Note! BaseModel does /not/ inherit from Base. All other classes will inherit from BaseModel to get common values (id, created_at, updated_at), where inheriting from Base will actually cause SQLAlchemy to attempt to map it to a table.
-Add or replace in the class BaseModel:
-class attribute id
-represents a column containing a unique string (60 characters)
-can’t be null
-primary key
-class attribute created_at
-represents a column containing a datetime
-can’t be null
-default value is the current datetime (use datetime.utcnow())
-class attribute updated_at
-represents a column containing a datetime
-can’t be null
-default value is the current datetime (use datetime.utcnow())
-Move the models.storage.new(self) from def __init__(self, *args, **kwargs): to def save(self): and call it just before models.storage.save()
-In def __init__(self, *args, **kwargs):, manage kwargs to create instance attribute from this dictionary. Ex: kwargs={ 'name': "California" } => self.name = "California" if it’s not already the case
-Update the to_dict() method of the class BaseModel:
-remove the key _sa_instance_state from the dictionary returned by this method only if this key exists
-Add a new public instance method: def delete(self): to delete the current instance from the storage (models.storage) by calling the method delete
-Update City: (models/city.py)
++ Create `Base = declarative_base()` before the class definition of `BaseModel`
++ **Note! BaseModel does /not/ inherit from Base. All other classes will inherit from BaseModel to get common values (id**, `created_at`, `updated_at` **), where inheriting from Base will actually cause SQLAlchemy to attempt to map it to a table.**
++ Add or replace in the class `BaseModel`:
+    - class attribute `id`
+      - represents a column containing a unique string (60 characters)
+      - can’t be null
+      - primary key
+    - class attribute `created_at`
+      - represents a column containing a datetime
+      - can’t be null
+      - default value is the current datetime (use `datetime.utcnow()`)
+    - class attribute `updated_at`
+      - represents a column containing a datetime
+      - can’t be null
+      - default value is the current datetime (use `datetime.utcnow()`)
 
-City inherits from BaseModel and Base (respect the order)
-Add or replace in the class City:
-class attribute __tablename__ -
-represents the table name, cities
-class attribute name
-represents a column containing a string (128 characters)
-can’t be null
-class attribute state_id
-represents a column containing a string (60 characters)
-can’t be null
-is a foreign key to states.id
-Update State: (models/state.py)
++ Move the `models.storage.new(self)` from `def __init__(self, *args, **kwargs):` to `def save(self):` and call it just before `models.storage.save()`
++ In `def __init__(self, *args, **kwargs):`, manage `kwargs` to create instance attribute from this dictionary. Ex: `kwargs={ 'name': "California" }` => `self.name = "California"` if it’s not already the case
++ Update the `to_dict()` method of the class `BaseModel`:
++ remove the key `_sa_instance_state` from the dictionary returned by this method **only if this key exists**
++ Add a new public instance method: `def delete(self):` to delete the current instance from the storage (`models.storage`) by calling the method `delete`
 
-State inherits from BaseModel and Base (respect the order)
-Add or replace in the class State:
+Update `City`: (`models/city.py`)
+
++ `City` inherits from `BaseModel` and `Base` (respect the order)
++ Add or replace in the class `City`:
+    - class attribute `__tablename__` -
+      - represents the table name, `cities`
+    - class attribute `name`
+      - represents a column containing a string (128 characters)
+      - can’t be null
+    - class attribute `state_id`
+      - represents a column containing a string (60 characters)
+      - can’t be null
+      - is a foreign key to `states.id`
+
+Update `State`: (`models/state.py`)
+
++ `State` inherits from `BaseModel` and `Base` (respect the order)
++ Add or replace in the class State:
 class attribute __tablename__
 represents the table name, states
 class attribute name
