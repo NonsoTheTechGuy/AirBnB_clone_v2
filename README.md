@@ -157,7 +157,7 @@ guillaume@ubuntu:~/AirBnB_v2$
 ```
 Some tests won’t be relevant for some type of storage, please skip them by using the `skipIf` feature of [the Unittest module - 26.3.6. Skipping tests and expected failures](https://intranet.alxswe.com/rltoken/Gx_1dJOPPeAyeM6NaXDmjg). Of course, the number of tests must be higher than the current number of tests, so if you decide to skip a test, you should write a new test!
 
-**How to test with MySQL?**
+## How to test with MySQL?
 First, you create a specific database for it (next tasks). After, you have to remember what the purpose of an unittest?
 
 **“Assert a current state (objects/data/database), do an action, and validate this action changed (or not) the state of your objects/data/database”**
@@ -183,9 +183,9 @@ Update the `def do_create(self, arg):` function of your command interpreter (`co
 + Command syntax: `create <Class name> <param 1> <param 2> <param 3>...`
 + Param syntax: `<key name>=<value>`
 + Value syntax:
-    + String: `"<value>"` => starts with a double quote
-     - any double quote inside the value must be escaped with a backslash `\`
-all underscores _ must be replace by spaces . Example: You want to set the string `My little house` to the attribute `name`, your command line must be `name="My_little_house"`
+    - String: `"<value>"` => starts with a double quote
+       - any double quote inside the value must be escaped with a backslash `\`
+       - all underscores _ must be replace by spaces . Example: You want to set the string `My little house` to the attribute `name`, your command line must be `name="My_little_house"`
      - Float: `<unit>.<decimal>`=> contains a dot .
      - Integer: `<number>` => default case
 - If any parameter doesn’t fit with these requirements or can’t be recognized correctly by your program, it must be skipped
