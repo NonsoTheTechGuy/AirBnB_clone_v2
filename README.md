@@ -396,7 +396,7 @@ Update `BaseModel`: (`models/base_model.py`)
 + Move the `models.storage.new(self)` from `def __init__(self, *args, **kwargs):` to `def save(self):` and call it just before `models.storage.save()`
 + In `def __init__(self, *args, **kwargs):`, manage `kwargs` to create instance attribute from this dictionary. Ex: `kwargs={ 'name': "California" }` => `self.name = "California"` if it’s not already the case
 + Update the `to_dict()` method of the class `BaseModel`:
-+ remove the key `_sa_instance_state` from the dictionary returned by this method **only if this key exists**
+    - remove the key `_sa_instance_state` from the dictionary returned by this method **only if this key exists**
 + Add a new public instance method: `def delete(self):` to delete the current instance from the storage (`models.storage`) by calling the method `delete`
 
 Update `City`: (`models/city.py`)
