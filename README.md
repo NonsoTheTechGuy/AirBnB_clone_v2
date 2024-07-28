@@ -609,7 +609,7 @@ Update `Place`: (`models/place.py`)
       - represents a column containing an integer
       - can’t be null
       - default value: 0
-    - class attribute price_by_night
+    - class attribute `price_by_night`
       - represents a column containing an integer
       - can’t be null
       - default value: `0`
@@ -758,8 +758,9 @@ Update `Place`: (`models/place.py`)
 
 In our system, we don’t want to duplicate amenities (for example, having 10000 time the amenity `Wifi`), so they will be unique. But, at least 2 places can have the same amenity (like `Wifi` for example). We are in the case of:
 
-an amenity can be linked to multiple places
-a place can have multiple amenities
+- an amenity can be linked to multiple places
+- a place can have multiple amenities
+- 
 = `Many-To-Many`
 
 To make this link working, we will create a third table called `place_amenity` that will create these links.
