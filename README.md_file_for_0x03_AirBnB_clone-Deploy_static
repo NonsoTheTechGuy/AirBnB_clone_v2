@@ -1,23 +1,9 @@
+# SE Foundations Curriculum
 
-Curriculum
-SE Foundations
-Average: 62.25%
-0x03. AirBnB clone - Deploy static
-DevOps
-Python
-SysAdmin
-Scripting
-CI/CD
- Weight: 1
- Project over - took place from Jul 10, 2024 6:00 AM to Jul 12, 2024 6:00 AM
- An auto review will be launched at the deadline
-In a nutshell…
-Auto QA review: 0.0/51 mandatory & 0.0/35 optional
-Altogether:  0.0%
-Mandatory: 0.0%
-Optional: 0.0%
-Calculation:  0.0% + (0.0% * 0.0%)  == 0.0%
-Concepts
+## 0x03. AirBnB clone - Deploy static
+`DevOps` `Python` `SysAdmin` `Scripting` `CI/CD`
+
+# Concepts
 For this project, we expect you to look at these concepts:
 
 CI/CD
