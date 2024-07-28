@@ -577,56 +577,59 @@ guillaume@ubuntu:~/AirBnB_v2$
 
 `mandatory`
  
-Update Place: (models/place.py)
+Update `Place`: (`models/place.py`)
 
-Place inherits from BaseModel and Base (respect the order)
-Add or replace in the class Place:
-class attribute __tablename__
-represents the table name, places
-class attribute city_id
-represents a column containing a string (60 characters)
-can’t be null
-is a foreign key to cities.id
-class attribute user_id
-represents a column containing a string (60 characters)
-can’t be null
-is a foreign key to users.id
-class attribute name
-represents a column containing a string (128 characters)
-can’t be null
-class attribute description
-represents a column containing a string (1024 characters)
-can be null
-class attribute number_rooms
-represents a column containing an integer
-can’t be null
-default value: 0
-class attribute number_bathrooms
-represents a column containing an integer
-can’t be null
-default value: 0
-class attribute max_guest
-represents a column containing an integer
-can’t be null
-default value: 0
-class attribute price_by_night
-represents a column containing an integer
-can’t be null
-default value: 0
-class attribute latitude
-represents a column containing a float
-can be null
-class attribute longitude
-represents a column containing a float
-can be null
-Update User: (models/user.py)
+- `Place` inherits from `BaseModel` and `Base` (respect the order)
+- Add or replace in the class `Place`:
+    - class attribute `__tablename__`
+      - represents the table name, `places`
+    - class attribute `city_id`
+      - represents a column containing a string (60 characters
+      - can’t be null
+      - is a foreign key to `cities.id`
+    - class attribute `user_id`
+      - represents a column containing a string (60 characters)
+      - can’t be null
+      - is a foreign key to `users.id`
+    - class attribute `name`
+      - represents a column containing a string (128 characters)
+      - can’t be null
+    - class attribute `description`
+      - represents a column containing a string (1024 characters)
+      - can be null
+    - class attribute `number_rooms`
+      - represents a column containing an integer
+      - can’t be null
+      - default value: `0`
+    - class attribute `number_bathrooms`
+      - represents a column containing an integer
+      - can’t be null
+      - default value: `0`
+    - class attribute `max_guest`
+      - represents a column containing an integer
+      - can’t be null
+      - default value: 0
+    - class attribute price_by_night
+      - represents a column containing an integer
+      - can’t be null
+      - default value: `0`
+    - class attribute `latitude`
+      - represents a column containing a float
+      - can be null
+    - class attribute `longitude`
+      - represents a column containing a float
+      - can be null
 
-Add or replace in the class User:
-class attribute places must represent a relationship with the class Place. If the User object is deleted, all linked Place objects must be automatically deleted. Also, the reference from a Place object to his User should be named user
+Update `User`: (`models/user.py`)
+
+- Add or replace in the class `User`:
+    - class attribute `places` must represent a relationship with the class `Place`. If the `User` object is deleted, all linked `Place` objects must be automatically deleted. Also, the reference from a `Place` object to his `User` should be named `user`
+
 Update City: (models/city.py)
 
-Add or replace in the class City:
-class attribute places must represent a relationship with the class Place. If the City object is deleted, all linked Place objects must be automatically deleted. Also, the reference from a Place object to his City should be named cities
+- Add or replace in the class `City`:
+    - class attribute `places` must represent a relationship with the class `Place`. If the `City` object is deleted, all linked `Place` objects must be automatically deleted. Also, the reference from a `Place` object to his `City` should be named `cities`
+```
 guillaume@ubuntu:~/AirBnB_v2$ echo 'create Place city_id="4b457e66-c7c8-4f63-910f-fd91c3b7140b" user_id="4f3f4b42-a4c3-4c20-a492-efff10d00c0b" name="Lovely_place" number_rooms=3 number_bathrooms=1 max_guest=6 price_by_night=120 latitude=37.773972 longitude=-122.431297' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py 
 (hbnb) ed72aa02-3286-4891-acbc-9d9fc80a1103
 (hbnb) 
@@ -652,39 +655,44 @@ number_bathrooms: 1
         latitude: 37.774
        longitude: -122.431
 guillaume@ubuntu:~/AirBnB_v2$ 
-Repo:
+```
+## Repo:
 
-GitHub repository: AirBnB_clone_v2
-File: models/place.py, models/user.py, models/city.py
+- GitHub repository: `AirBnB_clone_v2`
+- File: `models/place.py, models/user.py, models/city.py`
    
-9. DBStorage - Review
-mandatory
-Score: 0.0% (Checks completed: 0.0%)
-Update Review: (models/review.py)
+## 9. DBStorage - Review
 
-Review inherits from BaseModel and Base (respect the order)
-Add or replace in the class Review:
-class attribute __tablename__
-represents the table name, reviews
-class attribute text
-represents a column containing a string (1024 characters)
-can’t be null
-class attribute place_id
-represents a column containing a string (60 characters)
-can’t be null
-is a foreign key to places.id
-class attribute user_id
-represents a column containing a string (60 characters)
-can’t be null
-is a foreign key to users.id
-Update User: (models/user.py)
+`mandatory` 
 
-Add or replace in the class User:
-class attribute reviews must represent a relationship with the class Review. If the User object is deleted, all linked Review objects must be automatically deleted. Also, the reference from a Review object to his User should be named user
-Update Place: (models/place.py)
+Update `Review`: (`models/review.py`)
 
-for DBStorage: class attribute reviews must represent a relationship with the class Review. If the Place object is deleted, all linked Review objects must be automatically deleted. Also, the reference from a Review object to his Place should be named place
-for FileStorage: getter attribute reviews that returns the list of Review instances with place_id equals to the current Place.id => It will be the FileStorage relationship between Place and Review
+- `Review` inherits from `BaseModel` and `Base` (respect the order)
+- Add or replace in the class `Review`:
+    - class attribute `__tablename__`
+      - represents the table name, `reviews`
+    - class attribute `text`
+      - represents a column containing a string (1024 characters)
+      - can’t be null
+    - class attribute `place_id`
+      - represents a column containing a string (60 characters)
+      - can’t be null
+      - is a foreign key to `places.id`
+    - class attribute `user_id`
+      - represents a column containing a string (60 characters)
+      - can’t be null
+      - is a foreign key to `users.id`
+
+Update `User`: (`models/user.py`)
+
+- Add or replace in the class `User`:
+    - class attribute `reviews` must represent a relationship with the class `Review`. If the `User` object is deleted, all linked `Review` objects must be automatically deleted. Also, the reference from a `Review` object to his `User` should be named `user`
+
+Update `Place`: (`models/place.py`)
+
+- for `DBStorage`: class attribute `reviews` must represent a relationship with the class `Review`. If the `Place` object is deleted, all linked `Review` objects must be automatically deleted. Also, the reference from a `Review` object to his `Place` should be named `place`
+- for `FileStorage`: getter attribute `reviews` that returns the list of `Review` instances with `place_id` equals to the current `Place.id` => It will be the `FileStorage` relationship between `Place` and `Review`
+```
 guillaume@ubuntu:~/AirBnB_v2$ 
 guillaume@ubuntu:~/AirBnB_v2$ echo 'create User email="bob@hbtn.io" password="bobpwd" first_name="Bob" last_name="Dylan"' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py 
 (hbnb) d93638d9-8233-4124-8f4e-17786592908b
@@ -708,48 +716,56 @@ updated_at: 2017-11-10 04:06:25
   place_id: ed72aa02-3286-4891-acbc-9d9fc80a1103
    user_id: d93638d9-8233-4124-8f4e-17786592908b
 guillaume@ubuntu:~/AirBnB_v2$ 
-Repo:
+```
 
-GitHub repository: AirBnB_clone_v2
-File: models/review.py, models/user.py, models/place.py
+## Repo:
+
+- GitHub repository: `AirBnB_clone_v2`
+- File: `models/review.py, models/user.py, models/place.py`
    
-10. DBStorage - Amenity... and BOOM!
-mandatory
-Score: 0.0% (Checks completed: 0.0%)
-Update Amenity: (models/amenity.py)
+## 10. DBStorage - Amenity... and BOOM!
 
-Amenity inherits from BaseModel and Base (respect the order)
-Add or replace in the class Amenity:
-class attribute __tablename__
-represents the table name, amenities
-class attribute name
-represents a column containing a string (128 characters)
-can’t be null
-class attribute place_amenities must represent a relationship Many-To-Many between the class Place and Amenity. Please see below more detail: place_amenity in the Place update
-Update Place: (models/place.py)
+`mandatory`
+ 
+Update `Amenity`: (`models/amenity.py`)
 
-Add an instance of SQLAlchemy Table called place_amenity for creating the relationship Many-To-Many between Place and Amenity:
-table name place_amenity
-metadata = Base.metadata
-2 columns:
-place_id, a string of 60 characters foreign key of places.id, primary key in the table and never null
-amenity_id, a string of 60 characters foreign key of amenities.id, primary key in the table and never null
-Update Place class:
-for DBStorage: class attribute amenities must represent a relationship with the class Amenity but also as secondary to place_amenity with option viewonly=False (place_amenity has been define previously)
-for FileStorage:
-Getter attribute amenities that returns the list of Amenity instances based on the attribute amenity_ids that contains all Amenity.id linked to the Place
-Setter attribute amenities that handles append method for adding an Amenity.id to the attribute amenity_ids. This method should accept only Amenity object, otherwise, do nothing.
-What’s a Many-to-Many relationship?
-In our system, we don’t want to duplicate amenities (for example, having 10000 time the amenity Wifi), so they will be unique. But, at least 2 places can have the same amenity (like Wifi for example). We are in the case of:
+- `Amenity` inherits from `BaseModel` and `Base` (respect the order)
+- Add or replace in the class `Amenity`:
+    - class attribute `__tablename__`
+      - represents the table name, `amenities`
+    - class attribute `name`
+      - represents a column containing a string (128 characters)
+      - can’t be null
+    - class attribute `place_amenities` must represent a relationship [Many-To-Many](https://intranet.alxswe.com/rltoken/LiU5umFamh-YbwWkgd8kNw) between the class Place and Amenity. Please see below more detail: `place_amenity` in the `Place` update
+
+Update `Place`: (`models/place.py`)
+
+- Add an instance of [SQLAlchemy Table](https://intranet.alxswe.com/rltoken/Pngd-iHVu-kUMyq5VaC9PQ) called `place_amenity` for creating the relationship [Many-To-Many](https://intranet.alxswe.com/rltoken/LiU5umFamh-YbwWkgd8kNw) between `Place` and `Amenity`:
+    - table name `place_amenity`
+    - `metadata = Base.metadata`
+    - 2 columns:
+      - `place_id`, a string of 60 characters foreign key of `places.id`, primary key in the table and never null
+      - `amenity_id`, a string of 60 characters foreign key of `amenities.id`, primary key in the table and never null
+
+- Update `Place` class:
+
+    - for `DBStorage`: class attribute `amenities` must represent a relationship with the class `Amenity` but also as `secondary` to `place_amenity` with option `viewonly=False` (`place_amenity` has been define previously)
+    - for `FileStorage`:
+      - Getter attribute `amenities` that returns the list of `Amenity` instances based on the attribute `amenity_ids` that contains all `Amenity.id` linked to the `Place`
+      - Setter attribute `amenities` that handles `append` method for adding an `Amenity.id` to the attribute `amenity_ids`. This method should accept only `Amenity` object, otherwise, do nothing.
+
+**What’s a `Many-to-Many` relationship?**
+
+In our system, we don’t want to duplicate amenities (for example, having 10000 time the amenity `Wifi`), so they will be unique. But, at least 2 places can have the same amenity (like `Wifi` for example). We are in the case of:
 
 an amenity can be linked to multiple places
 a place can have multiple amenities
-= Many-To-Many
+= `Many-To-Many`
 
-To make this link working, we will create a third table called place_amenity that will create these links.
+To make this link working, we will create a third table called `place_amenity` that will create these links.
 
 And you are good, you have a new engine!
-
+```
 guillaume@ubuntu:~/AirBnB_v2$ cat main_place_amenities.py 
 #!/usr/bin/python3
 """ Test link Many-To-Many Place <> Amenity
@@ -866,10 +882,12 @@ amenity_id: b80aec52-d0c9-420a-8471-3254572954b6
   place_id: db549ae1-4500-4d0c-9b50-4b4978ed229e
 amenity_id: b80aec52-d0c9-420a-8471-3254572954b6
 guillaume@ubuntu:~/AirBnB_v2$ 
-Repo:
+```
+## Repo:
 
-GitHub repository: AirBnB_clone_v2
-File: models/amenity.py, models/place.py
-   
-Copyright © 2024 ALX, All rights reserved.
+- GitHub repository: `AirBnB_clone_v2`
+- File: `models/amenity.py, models/place.py`
+
+ #cAuthor 
+ ## KALU JONAH CHINONSO
 
