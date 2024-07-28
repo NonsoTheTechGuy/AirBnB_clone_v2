@@ -760,7 +760,7 @@ In our system, we don’t want to duplicate amenities (for example, having 10000
 
 - an amenity can be linked to multiple places
 - a place can have multiple amenities
-- 
+
 = `Many-To-Many`
 
 To make this link working, we will create a third table called `place_amenity` that will create these links.
